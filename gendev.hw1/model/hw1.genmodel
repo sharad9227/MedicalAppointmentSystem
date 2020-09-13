@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/gendev.hw1/src-gen" creationIcons="false" editDirectory="/gendev.hw1.edit/src-gen"
+    editorDirectory="/gendev.hw1.editor/src-gen" modelPluginID="gendev.hw1" modelName="Hw1"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>hw1.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Hw1" basePackage="gendev" disposableProviderFactory="true"
+      ecorePackage="hw1.ecore#/">
+    <genClasses ecoreClass="hw1.ecore#//Staff">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Staff/staffId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Staff/staffName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Staff/bookAppointment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Staff/appointment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Staff/patient"/>
+    </genClasses>
+    <genClasses ecoreClass="hw1.ecore#//Patient">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Patient/patientId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Patient/patientName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Patient/RegisteredPatientFlag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Patient/requestAppointment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Patient/appointment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Patient/staff"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Patient/doctor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Patient/healthInsuranceCover"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Patient/emergencyCase"/>
+    </genClasses>
+    <genClasses ecoreClass="hw1.ecore#//Appointment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Appointment/appointmentDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Appointment/appointmentType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Appointment/staff"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Appointment/patient"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Appointment/amountforAppointment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Appointment/payment"/>
+    </genClasses>
+    <genClasses ecoreClass="hw1.ecore#//DoctorAppointment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//DoctorAppointment/doctorAvailabilty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//DoctorAppointment/appointmentTime"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//DoctorAppointment/doctor"/>
+    </genClasses>
+    <genClasses ecoreClass="hw1.ecore#//HospitalAppointment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//HospitalAppointment/bedAllotment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//HospitalAppointment/hospitalName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//HospitalAppointment/hospitalId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//HospitalAppointment/emergency"/>
+    </genClasses>
+    <genClasses ecoreClass="hw1.ecore#//Doctor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Doctor/doctorName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//Doctor/doctorId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Doctor/doctorappointment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//Doctor/patient"/>
+    </genClasses>
+    <genClasses ecoreClass="hw1.ecore#//PaymentGateway">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hw1.ecore#//PaymentGateway/appointment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//PaymentGateway/paidAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hw1.ecore#//PaymentGateway/paymentStatus"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

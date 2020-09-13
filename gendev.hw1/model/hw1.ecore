@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hw1" nsURI="http://www.example.org/hw1" nsPrefix="hw1">
+  <eClassifiers xsi:type="ecore:EClass" name="Staff">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="staffId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="staffName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bookAppointment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appointment" upperBound="-1"
+        eType="#//Appointment" eOpposite="#//Appointment/staff"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patient" upperBound="-1"
+        eType="#//Patient" eOpposite="#//Patient/staff"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Patient">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="RegisteredPatientFlag"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestAppointment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appointment" lowerBound="1"
+        upperBound="-1" eType="#//Appointment" eOpposite="#//Appointment/patient"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staff" eType="#//Staff"
+        eOpposite="#//Staff/patient"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="doctor" lowerBound="1"
+        upperBound="-1" eType="#//Doctor" eOpposite="#//Doctor/patient"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="healthInsuranceCover" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emergencyCase" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Appointment" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appointmentDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appointmentType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staff" eType="#//Staff"
+        eOpposite="#//Staff/appointment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patient" lowerBound="1"
+        eType="#//Patient" eOpposite="#//Patient/appointment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amountforAppointment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="payment" eType="#//PaymentGateway"
+        eOpposite="#//PaymentGateway/appointment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoctorAppointment" eSuperTypes="#//Appointment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doctorAvailabilty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appointmentTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="doctor" lowerBound="1"
+        eType="#//Doctor" eOpposite="#//Doctor/doctorappointment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HospitalAppointment" eSuperTypes="#//Appointment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bedAllotment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hospitalName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hospitalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emergency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Doctor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doctorName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doctorId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="doctorappointment" lowerBound="1"
+        upperBound="-1" eType="#//DoctorAppointment" eOpposite="#//DoctorAppointment/doctor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patient" upperBound="-1"
+        eType="#//Patient" eOpposite="#//Patient/doctor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaymentGateway">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appointment" lowerBound="1"
+        upperBound="-1" eType="#//Appointment" eOpposite="#//Appointment/payment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paidAmount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paymentStatus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+</ecore:EPackage>

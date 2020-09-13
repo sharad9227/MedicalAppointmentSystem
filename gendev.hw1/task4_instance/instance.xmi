@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hw1="http://www.example.org/hw1">
+  <hw1:PaymentGateway appointment="/5" paidAmount="10005.0" paymentStatus="true"/>
+  <hw1:DoctorAppointment/>
+  <hw1:Doctor/>
+  <hw1:Patient patientId="201" patientName="Raina" RegisteredPatientFlag="true" requestAppointment="true" appointment="/5" staff="/4" healthInsuranceCover="true" emergencyCase="true"/>
+  <hw1:Staff staffId="1" staffName="rosie" appointment="/5" patient="/3"/>
+  <hw1:HospitalAppointment appointmentDate="2020-09-13T23:15:41.182+0100" appointmentType="Hospital" staff="/4" patient="/3" amountforAppointment="10005.0" payment="/0" bedAllotment="true" hospitalName="Atos" hospitalId="101" emergency="true"/>
+</xmi:XMI>
